@@ -3,7 +3,8 @@ class CreateDevices < ActiveRecord::Migration[5.0]
     create_table :devices do |t|
       t.string :name
       t.string :address
-      t.belongs_to :user, index: true
+      t.references :user, foreign_key: true
+      t.references :company, foreign_key: true
       t.string :uniq_code
 
       t.timestamps
