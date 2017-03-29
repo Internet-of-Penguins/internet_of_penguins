@@ -1,6 +1,4 @@
 class DeviceController < ApplicationController
-  before_action :find_my_device, only: [:edit, :update, :show, :destroy]
-
 
 def index
   @devices = Device.all
