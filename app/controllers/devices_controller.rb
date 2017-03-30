@@ -1,4 +1,4 @@
-class DeviceController < ApplicationController
+class DevicesController < ApplicationController
   before_action :find_my_device, only: [:edit, :update, :show, :destroy]
 
 
@@ -10,7 +10,7 @@ def show
 end
 
 def new
-  @Device = Device.new
+  @device = Device.new
 end
 
 def edit
