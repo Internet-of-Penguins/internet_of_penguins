@@ -1,5 +1,7 @@
 class DevicesController < ApplicationController
   before_action :find_my_device, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!
+
 
 
 def index
@@ -19,6 +21,8 @@ end
 def create
   @device = Device.new(params.require(:device).permit(:name,:addres))
   @device.user_id = current_user.id
+  @device.company_id = 1 #to do
+
     if @device.save
       redirect_to @device
     else
