@@ -1,3 +1,4 @@
 <h1>New Device </h1>
+<%= collection_select :device, :company_id, Company.all, :id, :name, prompt: true %>
 <%= render 'form', device: @device %>
 <%= link_to 'all_devices', devices_path %>

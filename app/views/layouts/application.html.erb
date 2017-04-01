@@ -9,7 +9,13 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <%= yield %>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
