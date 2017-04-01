@@ -1,10 +1,16 @@
 <h1>all devices</h1
 
+
 <% @devices.each do |device| %>
 <b><%= "#{device.id}. device " %></b>
 <%=device.id %>
 <%= device.name %>
 <%= device.address %>
+<%= device.name %>
+<%= device.company.name %>
+
+
+
 <%= link_to "Show", device_path(device) %>
 <%= link_to "Edit", edit_device_path(device.id) %>
 <%= link_to "Delete", device_path(device), method: :delete ,
