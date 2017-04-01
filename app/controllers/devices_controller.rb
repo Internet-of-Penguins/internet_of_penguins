@@ -1,11 +1,12 @@
 class DevicesController < ApplicationController
-  before_action :find_my_device, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!
+  before_action :find_my_device, only: [:edit, :update, :show, :destroy]
+
 
 
 
 def index
-  @devices = Device.all
+  @devices = current_user.devices
 end
 
 def show
