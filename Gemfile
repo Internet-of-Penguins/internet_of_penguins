@@ -54,3 +54,4 @@ end
 gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem "devise"
+gem 'bootstrap_sb_admin_base_v2'

@@ -11,15 +11,28 @@
     function myMap() {
     var mapCanvas = document.getElementById("map");
     var myCenter = new google.maps.LatLng(40.9955239,39.7727757);
-    var newMarker = new google.maps.LatLng(40.9934030,39.7759000);
     var mapOptions = {center: myCenter, zoom: 17};
     var map = new google.maps.Map(mapCanvas, mapOptions);
-    var marker = new google.maps.Marker({
-      position:newMarker,
-      icon: "pinkball.png",
-      map: map
-    });
+
+    <% @devices.each do |device| %>
+      var newMarker = new google.maps.LatLng(<%=device.name%>);
+      <% if device.datums.last.value.to_i > 10 %>
+        <% icon = "redball.png" %>
+        var marker = new google.maps.Marker({
+          position:newMarker,
+          icon: "<%=icon%>",
+          map: map
+        });
+      <% else %>
+        <% icon = "greenball.png" %>
+        var marker = new google.maps.Marker({
+          position:newMarker,
+          icon: "<%=icon%>",
+          map: map
+        });
+      <% end %>
+    <% end %>
   }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-s4spIbfdJ2Yp82XoDv6x4OzgZUTWAb0&callback=initMap"
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-s4spIbfdJ2Yp82XoDv6x4OzgZUTWAb0&callback=myMap"
   async defer></script>

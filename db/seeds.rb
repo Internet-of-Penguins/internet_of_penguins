@@ -11,6 +11,6 @@ User.create(email: "okanb3@gmail.com", password: "test1234")
   Company.create(name: "Company ##{i}", address: "An address for company ##{i}.")
   Device.create(name: "Device ##{i}", address: "An CoAP addres for device ##{i}", user_id: 1, company_id: i+1)
   5.times do |j|
-    Datum.create(name: "Data ##{j}", value: rand(0..40), device_id: i)
+    Datum.create(name: "Data ##{j}", value: rand(0..40), device_id: i+1)
   end
 end

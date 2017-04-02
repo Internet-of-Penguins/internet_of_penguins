@@ -6,7 +6,11 @@ class DevicesController < ApplicationController
 
 
 def index
-  @devices = current_user.devices
+  @devices = current_user.devices.includes(:datums)
+  @datum_count = 0
+  @devices.each do |device|
+    @datum_count = device.datums.count + @datum_count
+  end
 end
 
 def show
