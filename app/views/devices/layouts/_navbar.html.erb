@@ -41,10 +41,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <%= link_to "<i class='#{active_class(devices_path)} fa fa-dashboard fa-fw'></i> Dashboard".html_safe, devices_path %>
+                            <%= link_to "<i class='fa fa-dashboard fa-fw'></i> Dashboard".html_safe, devices_path, class: "#{active_class(devices_path)}" %>
                         </li>
                         <li>
-                            <%= link_to "<i class='#{active_class(new_device_path)} fa fa-linux fa-fw'></i> New Device".html_safe, new_device_path %>
+                            <%= link_to "<i class='fa fa-linux fa-fw'></i> New Device".html_safe, new_device_path, class: "#{active_class(new_device_path)}" %>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
