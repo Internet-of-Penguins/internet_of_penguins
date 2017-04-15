@@ -2,15 +2,14 @@
     /* Always set the map height explicitly to define the size of the div
     * element that contains the map. */
       #map {
-        height: 700px;
-        width: 800px;
+        height: 400px;
       }
     </style>
   <div id="map"></div>
   <script>
     function myMap() {
     var mapCanvas = document.getElementById("map");
-    var myCenter = new google.maps.LatLng(40.9955239,39.7727757);
+    var myCenter = new google.maps.LatLng(40.993912,39.776724);
     var mapOptions = {center: myCenter, zoom: 17};
     var map = new google.maps.Map(mapCanvas, mapOptions);
 
