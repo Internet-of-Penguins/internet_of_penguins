@@ -21,16 +21,20 @@
                           <table width="100%" class="table table-striped table-bordered table-hover" id="myTable">
                             <thead>
                               <tr>
+                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Date Added</th>
+                                <th></th>
+                                <th></th>
                               </tr>
                             </thead>
                             <tbody>
                               <% @devices.each do |device| %>
                                 <tr class="odd gradeX">
+                                <td><%= device.id %></td>
                                 <td><%= link_to (device.name), device %></td>
                                 <td><%= device.created_at %></td>
-                                <td><%= button_to "Edit", edit_device_path(device), class: 'btn btn-primary btn-block' %></td>
+                                <td><%= button_to "Edit", edit_device_path(device), method: :get, class: 'btn btn-primary btn-block' %></td>
                                 <td><%= button_to "Delete", device_path(device), method: :delete, class: 'btn btn-danger btn-block'  %></td>
                                 </tr>
                               <% end %>
