@@ -36,6 +36,8 @@
           </div>
         </div>
       </div>
+
+      <%= render '/devices/layouts/show_device_on_map' if current_user.use_case == 'garbage' %>
     </div>
     <!-- /.container-fluid -->
   </div>

@@ -1,0 +1,35 @@
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+      #map {
+        height: 400px;
+      }
+    </style>
+  <div id="map"></div>
+  <script>
+    function myMap() {
+    var mapCanvas = document.getElementById("map");
+    var myCenter = new google.maps.LatLng(<%=@device.name%>);
+    var mapOptions = {center: myCenter, zoom: 17};
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var newMarker = new google.maps.LatLng(<%=@device.name%>);
+      <% if @device.datums.last.value.to_i > 10 %>
+        <% icon = "redball.png" %>
+        var marker = new google.maps.Marker({
+          position:newMarker,
+          icon: "<%=icon%>",
+          map: map
+        });
+      <% else %>
+        <% icon = "greenball.png" %>
+        var marker = new google.maps.Marker({
+          position:newMarker,
+          icon: "<%=icon%>",
+          map: map
+        });
+      <% end %>
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-s4spIbfdJ2Yp82XoDv6x4OzgZUTWAb0&callback=myMap"
+  async defer></script>
