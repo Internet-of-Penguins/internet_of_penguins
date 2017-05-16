@@ -2,9 +2,6 @@ class DevicesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_my_device, only: [:edit, :update, :show, :destroy]
 
-
-
-
 def index
   @devices = current_user.devices.includes(:datums)
   @datum_count = 0
@@ -57,6 +54,5 @@ private
   def find_my_device
     @device = Device.find_by(id: params[:id])
   end
-
 
 end
