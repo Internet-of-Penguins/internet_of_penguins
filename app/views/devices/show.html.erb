@@ -12,7 +12,7 @@
       </div>
       <!-- /.row -->
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-lg-offset-3">
+        <div class="col-lg-6 col-md-6">
           <div class="panel panel-default">
               <div class="panel-heading">
                   Device info for <%= @device.name %>
@@ -24,7 +24,7 @@
                         <br>
                         <b>Device Address:</b> <%= @device.address %>
                         <br>
-                        <b>Device Comapy:</b> <%= @device.company.name %>
+                        <b>Device Company:</b> <%= @device.company.name %>
                         <br>
                         <b>Device Created At:</b> <%= @device.created_at %>
                       </div>
@@ -35,9 +35,10 @@
               <!-- /.panel-body -->
           </div>
         </div>
+          <div class="col-lg-6">
+            <%= render '/devices/layouts/show_device_on_map' if current_user.use_case == 'garbage' %>
+          </div>
       </div>
-
-      <%= render '/devices/layouts/show_device_on_map' if current_user.use_case == 'garbage' %>
     </div>
     <!-- /.container-fluid -->
   </div>
