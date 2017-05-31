@@ -1,0 +1,9 @@
+- Cihaz katdetmede MAC çek etme işlemi
+  a - Kullanıcnın girdiği mac ile cihazın maci aynı mı
+  b - Cihazdan gelen mac bizdeki listede var mı
+  c - MAC adresi geçersizse hata mesajı döndürme
+- Rota çizerken sadece dolu kutuları içermesi
+- Rota için başlangıç ve bitişi dahil etme
+- Daha çok örnek kutu ekleme
+- Farklı bir profil açıp oraya gerçek cihazı ekleme
+- Görsel düzenlemeler?
