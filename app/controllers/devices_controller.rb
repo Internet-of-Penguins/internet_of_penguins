@@ -31,8 +31,10 @@ def create
       redirect_to @device
     else
       render 'new'
+      flash[:danger] = "Some error happened, duh."
     end
   else
+    flash[:danger] = "Device MAC not found, please register our products only."
     render 'new'
   end
 end
