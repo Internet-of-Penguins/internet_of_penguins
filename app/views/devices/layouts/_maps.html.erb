@@ -49,14 +49,15 @@
 
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        var waypts = [{
-          location: new google.maps.LatLng(40.996840, 39.772540),
-          stopover: true
-        },
-        {
-          location: new google.maps.LatLng(40.997414, 39.771618),
-          stopover: true
-        }
+        var waypts = [
+        <% @devices.each do |device| %>
+          <% if device.datums.last.value.to_i > 10 %>
+            {
+              location: new google.maps.LatLng(<%=device.name%>),
+              stopover: true
+            },
+          <% end %>
+        <% end %>
         ];
 
         directionsService.route({

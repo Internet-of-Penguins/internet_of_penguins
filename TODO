@@ -2,7 +2,7 @@
   a - Kullanıcnın girdiği mac ile cihazın maci aynı mı 
   b - Cihazdan gelen mac bizdeki listede var mı ----> OK
   c - MAC adresi geçersizse hata mesajı döndürme ----> OK
-- Rota çizerken sadece dolu kutuları içermesi
+- Rota çizerken sadece dolu kutuları içermesi ----> OK - Threshold is set to > 10
 - Rota için başlangıç ve bitişi dahil etme
 - Daha çok örnek kutu ekleme
 - Farklı bir profil açıp oraya gerçek cihazı ekleme
