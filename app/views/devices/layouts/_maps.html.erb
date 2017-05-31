@@ -2,7 +2,7 @@
     /* Always set the map height explicitly to define the size of the div
     * element that contains the map. */
       #map {
-        height: 400px;
+        height: 600px;
       }
     </style>
   <div id="map"></div>
@@ -16,11 +16,13 @@
     var mapOptions = {center: myCenter, zoom: 17};
     var map = new google.maps.Map(mapCanvas, mapOptions);
     var directionsService = new google.maps.DirectionsService;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsDisplay = new google.maps.DirectionsRenderer({
+        suppressMarkers: true
+    });
 
     <% @devices.each do |device| %>
       var newMarker = new google.maps.LatLng(<%=device.name%>);
-      <% if device.datums.last.value.to_i > 10 %>
+      <% if device.datums.last != nil && device.datums.last.value.to_i > 10 %>
         <% icon = "redball.png" %>
         var marker = new google.maps.Marker({
           position:newMarker,
@@ -51,7 +53,7 @@
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var waypts = [
         <% @devices.each do |device| %>
-          <% if device.datums.last.value.to_i > 10 %>
+          <% if device.datums.last != nil && device.datums.last.value.to_i > 10 %>
             {
               location: new google.maps.LatLng(<%=device.name%>),
               stopover: true
@@ -61,8 +63,8 @@
         ];
 
         directionsService.route({
-          origin: new google.maps.LatLng(40.992802, 39.776365),
-          destination: new google.maps.LatLng(40.992802, 39.776365),
+          origin: new google.maps.LatLng(40.998074, 39.763702),
+          destination: new google.maps.LatLng(40.998380, 39.761928),
           waypoints: waypts,
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
