@@ -24,10 +24,8 @@
                         <br>
                         <b>Device Address:</b> <%= @device.address %>
                         <br>
-                        <% if @garbage_level %>
-                          <b>Garbage Level:</b> <%= @garbage_level %>
-                          <br>
-                        <% end %>
+                        <b>Garbage Level:</b> <%= @device.datums.last.value.to_i %>%
+                        <br>
                         <b>Device Company:</b> <%= @device.company.name %>
                         <br>
                         <b>Device Created At:</b> <%= @device.created_at %>

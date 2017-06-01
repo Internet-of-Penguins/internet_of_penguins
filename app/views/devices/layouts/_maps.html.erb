@@ -22,7 +22,7 @@
 
     <% @devices.each do |device| %>
       var newMarker = new google.maps.LatLng(<%=device.name%>);
-      <% if device.datums.last != nil && device.datums.last.value.to_i > 10 %>
+      <% if device.datums.last != nil && device.datums.last.value.to_i > 30 %>
         <% icon = "redball.png" %>
         var marker = new google.maps.Marker({
           position:newMarker,
