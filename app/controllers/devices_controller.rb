@@ -11,6 +11,7 @@ def index
 end
 
 def show
+  @garbage_level = CoAP::Client.new.get_by_uri("coap://#{@device.address}/sensors/ambient_light").payload
 end
 
 def new
@@ -23,9 +24,9 @@ end
 def create
   @device = Device.new(params.require(:device).permit(:name,:address,:uniq_code))
   @device.user_id = current_user.id
-  #@device.company_id = 1 #to do selectable from dorpdown menu
+  device_mac = CoAP::Client.new.get_by_uri("coap://#{@device.address}/sensors/mac").payload
 
-  if MacList.find_by(mac_address: @device.uniq_code)
+  if device_mac == @device.uniq_code && MacList.find_by(mac_address: @device.uniq_code)
     @device.company_id = MacList.find_by(mac_address: @device.uniq_code).company.id
     if @device.save
       redirect_to @device
