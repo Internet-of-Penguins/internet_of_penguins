@@ -8,12 +8,12 @@
   <div id="map"></div>
   <br>
   <br>
-  <input type="submit" id="submit">
+  <input type="submit" value="Rota Çiz" class="btn btn-primary btn-block" id="submit">
   <script>
     function myMap() {
     var mapCanvas = document.getElementById("map");
-    var myCenter = new google.maps.LatLng(40.993912,39.776724);
-    var mapOptions = {center: myCenter, zoom: 17};
+    var myCenter = new google.maps.LatLng(40.996204,39.774589);
+    var mapOptions = {center: myCenter, zoom: 16};
     var map = new google.maps.Map(mapCanvas, mapOptions);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer({
@@ -53,7 +53,7 @@
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var waypts = [
         <% @devices.each do |device| %>
-          <% if device.datums.last != nil && device.datums.last.value.to_i > 10 %>
+          <% if device.datums.last != nil && device.datums.last.value.to_i > 30 %>
             {
               location: new google.maps.LatLng(<%=device.name%>),
               stopover: true

@@ -1,4 +1,44 @@
 <div class="row">
+	<div class="col-lg-6">
+	<br>
+	<br>
+		<div class="panel panel-primary">
+	        <div class="panel-heading">
+	            <div class="row">
+	                <div class="col-xs-3">
+	                    <i class="fa fa-linux fa-5x"></i>
+	                </div>
+	                <div class="col-xs-9 text-right">
+	                    <div class="huge"><%= @current_user.devices.count %></div>
+	                    <div>Total Device</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <br>
+	    <br>
+	    <br>
+	    <div class="panel panel-danger">
+	        <div class="panel-heading">
+	            <div class="row">
+	                <div class="col-xs-3">
+	                    <i class="fa fa-server fa-5x"></i>
+	                </div>
+	                <div class="col-xs-9 text-right">
+	                    <div class="huge">12</div>
+	                    <div>Full trash cans</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="col-lg-6">
+		<div class="panel-body">
+            <div id="donut-chart"></div>
+        </div>
+	</div>
+</div>
+<div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Status on Map</h1>
     </div>
@@ -9,3 +49,27 @@
   </div>
 </div>
 </div>
+
+<script>
+<% total_cans = current_user.devices.count %>
+<% full_cans = 0 %>
+<% current_user.devices.each do |device| %>
+	<% if device.datums.last != nil && device.datums.last.value.to_i > 30 %>
+		<% full_cans = full_cans + 1 %>
+	<% end %>
+<% end %>
+<% empty_cans = total_cans - full_cans %>
+	Morris.Donut({
+	  element: 'donut-chart',
+	  data: [
+	    {label: "Empty Garbage Cans", value: <%= empty_cans %>},
+	    {label: "Full Garbage Cans", value: <%= full_cans %>},
+	    {label: "Total Number", value: <%= total_cans %>}
+	  ],
+	  colors: [
+	    '#d9534f',
+	    '#5cb85c',
+	    '#337ab7'
+	  ]
+	});
+</script>
