@@ -56,3 +56,4 @@ gem "font-awesome-rails"
 gem "devise"
 gem 'bootstrap_sb_admin_base_v2'
 gem 'coap'
+gem 'active_model_serializers'
