@@ -11,7 +11,9 @@ def index
 end
 
 def show
-  @garbage_level = CoAP::Client.new.get_by_uri("coap://#{@device.address}/sensors/ambient_light").payload
+  if @device.address != "test"
+    @garbage_level = CoAP::Client.new.get_by_uri("coap://#{@device.address}/sensors/ambient_light").payload
+  end
 end
 
 def new
